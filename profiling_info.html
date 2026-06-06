@@ -1,0 +1,43 @@
+<p>Profiling is&nbsp;the process of measuring an application&#39;s resource consumption to identify performance bottlenecks. The four core profiling attributes&mdash;CPU time, elapsed time, CPU usage, and memory usage&mdash;together paint a complete picture of how efficiently your code executes and where it wastes system resources.</p>
+
+<p>The 4 Core Profiling Attributes</p>
+
+<p>1. CPU Time (Process/Thread Time)</p>
+
+<ul>
+	<li><strong>What it measures:</strong>&nbsp;The actual time the CPU core spent actively executing instructions for your program.</li>
+	<li><strong>Details:</strong>&nbsp;This measures&nbsp;<em>busy</em>&nbsp;work. It excludes time spent waiting for I/O operations (like disk reads, network requests) or time where the thread was paused.</li>
+	<li><strong>Use case:</strong>&nbsp;Use this to measure the computational efficiency of an algorithm. A high CPU time points to computationally heavy functions or inefficient, unoptimized loops.</li>
+</ul>
+
+<p>2. Elapsed Time (Wall Clock Time)</p>
+
+<ul>
+	<li><strong>What it measures:</strong>&nbsp;The real, absolute time that passes from the moment your program starts running to the moment it finishes.</li>
+	<li><strong>Details:</strong>&nbsp;This accounts for&nbsp;<em>everything</em>: CPU execution, waiting for locks, I/O latency, and system sleep times.</li>
+	<li><strong>Use case:</strong>&nbsp;This shows how long the end-user or client actually waits. Comparing elapsed time to CPU time is an excellent way to spot I/O bottlenecks.</li>
+</ul>
+
+<p>3. CPU Usage</p>
+
+<ul>
+	<li><strong>What it measures:</strong>&nbsp;The percentage of the computer&#39;s total CPU processing capacity that your program is utilizing.</li>
+	<li><strong>Details:</strong>&nbsp;Calculated as the ratio of CPU time to elapsed time multiplied by the number of available cores (e.g., a multi-threaded process running at 100% on two cores out of four would be 50% CPU usage).</li>
+	<li><strong>Use case:</strong>&nbsp;Use this to identify if your program is effectively utilizing multi-threading or if it is bottlenecked by a single thread.</li>
+</ul>
+
+<p>4. Memory Usage (Heap/Stack)</p>
+
+<ul>
+	<li><strong>What it measures:</strong>&nbsp;The amount of RAM your application consumes while executing, categorized into heap allocations (dynamic objects) and stack allocations (local variables/function calls).</li>
+	<li><strong>Details:</strong>&nbsp;Profilers track the total memory footprint as well as allocation rates, identifying how frequently objects are created and discarded.</li>
+	<li><strong>Use case:</strong>&nbsp;Use this to catch memory leaks, identify runaway data structures, and spot &quot;memory churn&quot; (creating and discarding objects too quickly) that causes frequent garbage collection pauses.</li>
+</ul>
+
+<p>Common Applications</p>
+
+<ul>
+	<li><strong>I/O Bottleneck:</strong>&nbsp;High&nbsp;<em>Elapsed Time</em>&nbsp;with low&nbsp;<em>CPU Time</em>&nbsp;and low&nbsp;<em>CPU Usage</em>&nbsp;indicates your program is spending too much time waiting for databases, disk access, or network calls.</li>
+	<li><strong>Algorithmic Inefficiency:</strong>&nbsp;High&nbsp;<em>CPU Time</em>&nbsp;and high&nbsp;<em>CPU Usage</em>&nbsp;indicate your algorithms require optimization.</li>
+	<li><strong>Memory Leaks:</strong>&nbsp;A continuous, unexplainable climb in&nbsp;<em>Memory Usage</em>&nbsp;over time points to lingering object references.</li>
+</ul>
