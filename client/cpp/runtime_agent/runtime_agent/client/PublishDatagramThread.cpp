@@ -82,7 +82,7 @@ void PublishDatagramThread::runPublishThread()
 				JSONPacket packet;
 
 				queue.front(packet);
-				socket.send_to(boost::asio::buffer(packet.data), destination_endpoint);
+				socket.send_to(boost::asio::buffer(packet.data, packet.length), destination_endpoint);
 
 				boost::this_thread::sleep(boost::posix_time::milliseconds(30));
 			}

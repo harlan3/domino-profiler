@@ -48,8 +48,6 @@ private:
 
     void runPublishThread();
 
-    boost::asio::io_service io_service_p;
-
     boost::thread* publishThread;
     SharedQueue<JSONPacket> queue;
 
